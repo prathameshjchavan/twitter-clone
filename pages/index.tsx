@@ -6,7 +6,7 @@ import Widgets from "../components/Widgets";
 
 const Home: NextPage = () => {
 	return (
-		<div>
+		<div className="lg:max-w-6xl mx-auto max-h-screen">
 			<Head>
 				<title>Twitter Clone</title>
 				<link rel="icon" href="/favicon.ico" />
