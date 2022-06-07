@@ -10,15 +10,22 @@ import {
 	HomeIcon,
 } from "@heroicons/react/outline";
 import Image from "next/image";
+import SidebarRow from "./SidebarRow";
 
-type Props = {};
-
-function Sidebar({}: Props) {
+function Sidebar() {
 	return (
-		<div>
+		<div className="flex flex-col col-span-2">
 			<div className="h-10 w-10 relative">
 				<Image src="https://links.papareact.com/drq" layout="fill" />
 			</div>
+			<SidebarRow Icon={HomeIcon} title="Home" />
+			<SidebarRow Icon={HashtagIcon} title="Explore" />
+			<SidebarRow Icon={BellIcon} title="Notifications" />
+			<SidebarRow Icon={MailIcon} title="Messages" />
+			<SidebarRow Icon={BookmarkIcon} title="Bookmarks" />
+			<SidebarRow Icon={CollectionIcon} title="Lists" />
+			<SidebarRow Icon={UserIcon} title="Sign In" />
+			<SidebarRow Icon={DotsCircleHorizontalIcon} title="More" />
 		</div>
 	);
 }
