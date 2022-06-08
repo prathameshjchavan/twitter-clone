@@ -16,7 +16,7 @@ const Home = ({ tweets }: Props) => {
 		<div className="lg:max-w-6xl mx-auto max-h-screen">
 			<Head>
 				<title>Twitter Clone</title>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/logo.png" />
 			</Head>
 			<Toaster />
 
