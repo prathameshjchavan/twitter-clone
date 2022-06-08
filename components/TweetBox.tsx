@@ -44,7 +44,7 @@ function TweetBox({ setTweets }: Props) {
 
 		const postToast = toast.loading("Posting Tweet...");
 
-		await fetch(`/api/addTweet`, {
+		await fetch("/api/addTweet", {
 			body: JSON.stringify(tweetBody),
 			method: "POST",
 		});
@@ -83,15 +83,23 @@ function TweetBox({ setTweets }: Props) {
 					<input
 						value={input}
 						onChange={(e) => setInput(e.target.value)}
+						disabled={!session}
 						className="h-24 w-full text-xl outline-none placeholder:text-xl"
 						type="text"
-						placeholder="What's Happening?"
+						placeholder={
+							session ? "What's Happening?" : "Please Sign In to Tweet"
+						}
 					/>
 					<div className="flex items-center">
 						<div className="flex space-x-2 text-twitter flex-1">
 							<PhotographIcon
-								onClick={() => setImageUrlBoxIsOpen(!imageUrlBoxIsOpen)}
-								className="cursor-pointer transition-transform duration-150 ease-out hover:scale-150 h-5 w-5"
+								onClick={() =>
+									session && setImageUrlBoxIsOpen(!imageUrlBoxIsOpen)
+								}
+								className={`h-5 w-5 ${
+									session &&
+									"cursor-pointer transition-transform duration-150 ease-out hover:scale-150"
+								}`}
 							/>
 							<SearchCircleIcon className="h-5 w-5" />
 							<EmojiHappyIcon className="h-5 w-5" />
