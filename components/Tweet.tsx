@@ -45,7 +45,7 @@ function Tweet({
 
 		await refreshComments();
 
-		toast("Comment Posted!", {
+		toast.success("Comment Posted!", {
 			id: postComment,
 		});
 	};
