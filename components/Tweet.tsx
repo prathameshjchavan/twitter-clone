@@ -5,6 +5,7 @@ import {
 	UploadIcon,
 } from "@heroicons/react/outline";
 import { useSession } from "next-auth/react";
+import dynamic from "next/dynamic";
 import React, { FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import TimeAgo from "react-timeago";
@@ -14,6 +15,8 @@ import { fetchComments } from "../utils/fetchComments";
 type Props = {
 	tweet: Tweet;
 };
+
+const NoSSRTimeAgo = dynamic(() => import("./TimeAgo"), { ssr: false });
 
 function Tweet({
 	tweet: { _id, profileImg, username, _createdAt, text, image },
@@ -79,7 +82,7 @@ function Tweet({
 							@{username.replace(/\s+/g, "").toLowerCase()}
 						</p>
 						&nbsp;&middot;
-						<TimeAgo className="text-sm text-gray-500" date={_createdAt} />
+						<NoSSRTimeAgo _createdAt={_createdAt} />
 					</div>
 
 					<p className="pt-1">{text}</p>
